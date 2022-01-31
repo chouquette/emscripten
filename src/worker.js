@@ -274,6 +274,8 @@ self.onmessage = (e) => {
       if (Module['_pthread_self']()) { // If this thread is actually running?
         Module['_emscripten_current_thread_process_queued_calls']();
       }
+    } else if (Module['onCustomMessage']) {
+      Module['onCustomMessage'](e.data);
     } else {
       err('worker.js received unknown command ' + e.data.cmd);
       err(e.data);

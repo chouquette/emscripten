@@ -241,6 +241,8 @@ var LibraryPThread = {
           if (Module['onAbort']) {
             Module['onAbort'](d['arg']);
           }
+        } else if (Module['onCustomMessage']) {
+          Module['onCustomMessage'](d);
         } else {
           err("worker sent an unknown command " + cmd);
         }
